@@ -1,0 +1,66 @@
+<h2>Shopping Cart</h2>
+
+@if (cartService.items().length === 0) {
+
+  <p>Your cart is empty.</p>
+
+} @else {
+
+  @for (item of cartService.items(); track item.product.id) {
+
+    <div class="cart-item">
+
+      <div>
+        <strong>{{ item.product.name }}</strong>
+        <p>₹{{ item.product.price }}</p>
+      </div>
+
+      <div>
+
+        <button
+          (click)="decrease(item.product.id)">
+          -
+        </button>
+
+        <span>
+          {{ item.quantity }}
+        </span>
+
+        <button
+          (click)="increase(item.product.id)">
+          +
+        </button>
+
+      </div>
+
+      <div>
+        ₹{{ item.product.price * item.quantity }}
+      </div>
+
+      <button
+        (click)="remove(item.product.id)">
+        Remove
+      </button>
+
+    </div>
+
+  }
+
+  <hr>
+
+  <h3>
+    Total Items:
+    {{ cartService.totalItems() }}
+  </h3>
+
+  <h3>
+    Total:
+    ₹{{ cartService.totalPrice() }}
+  </h3>
+<button
+      (click)="placeOrder()">
+
+      Place Order
+
+    </button>
+}

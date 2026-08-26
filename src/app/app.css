@@ -1,0 +1,38 @@
+.header {
+  height: 70px;
+  background-color: #B8860B;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header nav {
+  position: absolute;
+  right: 30px;
+
+  display: flex;
+  gap: 25px;
+
+  z-index: 9999;
+}
+
+.header nav a {
+  color: white;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  padding: 10px;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}

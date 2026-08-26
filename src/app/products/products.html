@@ -1,0 +1,52 @@
+<h2>Products</h2>
+
+<div class="product-container">
+
+  @for (product of products; track product.id) {
+
+    <div class="product-card">
+
+      <img
+        [src]="product.image"
+        [alt]="product.name"
+      />
+
+      <h3>{{ product.name }}</h3>
+
+      <p>{{ product.description }}</p>
+
+      <strong>
+        ₹{{ product.price }}
+      </strong>
+
+      <button
+        (click)="addToCart(product)">
+        Add to Cart
+      </button>
+
+    </div>
+
+  }
+<div class="pagination">
+
+  <button
+    (click)="previousPage()"
+    [disabled]="currentPage === 0">
+
+    Previous
+
+  </button>
+
+  <span>
+    Page {{ currentPage }}
+  </span>
+
+  <button
+    (click)="nextPage()">
+
+    Next
+
+  </button>
+
+</div>
+</div>

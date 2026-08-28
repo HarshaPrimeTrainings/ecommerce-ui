@@ -6,7 +6,7 @@
 
 } @else {
 
-  @for (item of cartService.items(); track item.product.id) {
+  @for (item of cartService.items(); track item.product.pid) {
 
     <div class="cart-item">
 
@@ -18,7 +18,7 @@
       <div>
 
         <button
-          (click)="decrease(item.product.id)">
+          (click)="decrease(item.product.pid)">
           -
         </button>
 
@@ -27,7 +27,7 @@
         </span>
 
         <button
-          (click)="increase(item.product.id)">
+          (click)="increase(item.product.pid)">
           +
         </button>
 
@@ -38,7 +38,7 @@
       </div>
 
       <button
-        (click)="remove(item.product.id)">
+        (click)="remove(item.product.pid)">
         Remove
       </button>
 

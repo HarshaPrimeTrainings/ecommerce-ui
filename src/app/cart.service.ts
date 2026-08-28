@@ -26,41 +26,38 @@ export class CartService {
   );
 
   addToCart(product: Product): void {
-
-    const items = this.cartItems();
+  this.cartItems.update(items => {
 
     const existingItem = items.find(
-      item => item.product.id === product.id
+      item => item.product.pid === product.pid
     );
 
     if (existingItem) {
-
-      this.cartItems.set(
-        items.map(item =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
+      return items.map(item =>
+        item.product.pid === product.pid
+          ? {
+              ...item,
+              quantity: item.quantity + 1
+            }
+          : item
       );
-
-    } else {
-
-      this.cartItems.set([
-        ...items,
-        {
-          product,
-          quantity: 1
-        }
-      ]);
-
     }
-  }
+
+    return [
+      ...items,
+      {
+        product: product,
+        quantity: 1
+      }
+    ];
+  });
+}
 
   increase(productId: number): void {
 
     this.cartItems.update(items =>
       items.map(item =>
-        item.product.id === productId
+        item.product.pid === productId
           ? { ...item, quantity: item.quantity + 1 }
           : item
       )
@@ -72,7 +69,7 @@ export class CartService {
     this.cartItems.update(items =>
       items
         .map(item =>
-          item.product.id === productId
+          item.product.pid === productId
             ? { ...item, quantity: item.quantity - 1 }
             : item
         )
@@ -83,7 +80,7 @@ export class CartService {
   remove(productId: number): void {
 
     this.cartItems.update(items =>
-      items.filter(item => item.product.id !== productId)
+      items.filter(item => item.product.pid !== productId)
     );
   }
 

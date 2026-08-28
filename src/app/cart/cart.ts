@@ -27,7 +27,7 @@ export class Cart {
     const request: CreateOrderRequest = {
 
       items: this.cartService.items().map(item => ({
-        productId: item.product.id,
+        productId: item.product.pid,
         quantity: item.quantity
       }))
 

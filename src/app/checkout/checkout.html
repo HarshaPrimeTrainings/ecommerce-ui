@@ -1,3 +1,4 @@
+<div class="checkout-form">
 <h2>Checkout</h2>
 
 @if (cartService.totalItems() === 0) {
@@ -5,6 +6,33 @@
   <p>Your cart is empty.</p>
 
 } @else {
+
+  <label>
+    Name
+    <input 
+    [(ngModel)]="customer.csname"
+    name="csname"
+    type="text"
+    />
+  </label>
+
+  <label>
+    Email
+    <input 
+    [(ngModel)]="customer.csemail"
+    name="csemail"
+    type="email"
+    />
+  </label>
+
+  <label>
+    Address
+    <input 
+    [(ngModel)]="customer.csaddress"
+    name="csaddress"
+    type="text"
+    />
+  </label>
 
   <p>
     Items:
@@ -21,3 +49,4 @@
   </button>
 
 }
+</div>

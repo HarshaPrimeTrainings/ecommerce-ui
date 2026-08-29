@@ -14,7 +14,7 @@ export class OrderService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = '/api/orders';
+  private apiUrl = 'http://localhost:8082/order/save';
 
   createOrder(
     request: CreateOrderRequest

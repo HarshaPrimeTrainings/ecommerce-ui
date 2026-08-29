@@ -23,45 +23,9 @@ export class Cart {
     if (this.cartService.totalItems() === 0) {
       return;
     }
-
-    const request: CreateOrderRequest = {
-
-      items: this.cartService.items().map(item => ({
-        productId: item.product.pid,
-        quantity: item.quantity
-      }))
-
-    };
- this.orderService
-      .createOrder(request)
-      .subscribe({
-
-        next: order => {
-
-          console.log('Order created:', order);
-
-          this.cartService.clear();
-
-          this.router.navigate([
-            '/order-success',
-            order.id
-          ]);
-
-        },
-
-        error: error => {
-
-          console.error(
-            'Failed to place order',
-            error
-          );
-
-          alert('Unable to place order');
-
-        }
-
-      });
+    this.router.navigate(['/checkout']);
   }
+ 
   increase(productId: number): void {
     this.cartService.increase(productId);
   }

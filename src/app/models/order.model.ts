@@ -1,14 +1,27 @@
+export interface OrderCustomer{
+  csname:string;
+  csemail:string;
+  csaddress:string;
+}
 export interface OrderItemRequest {
-  productId: number;
-  quantity: number;
+  name:string;
+  price:number;
+  quantity:number;
 }
 
 export interface CreateOrderRequest {
-  items: OrderItemRequest[];
+  status:string;
+  price:number;
+  customer:OrderCustomer;
+  orderItems: OrderItemRequest[];
 }
 
 export interface Order {
-  id: number;
+  oid?: number;
+  orderId?:number;
   status: string;
+  price:number;
+  customer:OrderCustomer;
   totalAmount: number;
+  orderItems:OrderItemRequest[];
 }

@@ -5,6 +5,7 @@ import {
 } from '@angular/router';
 
 import { CartService } from './cart.service';
+import { KeycloakService } from './keycloak';
 
 @Component({
   selector: 'app-root',
@@ -22,4 +23,6 @@ export class App {
   protected readonly title = signal('ecommerce-ui');
 
   cartService = inject(CartService);
+keycloakservice = inject(KeycloakService);
+
 }

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { autGaurd } from './auth.gaurd';
 
 export const routes: Routes = [
 
@@ -24,12 +25,14 @@ export const routes: Routes = [
 
   {
     path: 'checkout',
+    canActivate:[autGaurd],
     loadComponent: () =>
       import('./checkout/checkout')
         .then(m => m.Checkout)
   },
   {
   path: 'order-success/:id',
+  canActivate:[autGaurd],
   loadComponent: () =>
     import('./order-success/order-success')
       .then(m => m.OrderSuccess)

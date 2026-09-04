@@ -1,6 +1,7 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { Product } from './models/product.model';
 import { CartItem } from './models/cart-item.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class CartService {
   private cartItems = signal<CartItem[]>([]);
 
   items = this.cartItems.asReadonly();
+
 
   totalItems = computed(() =>
     this.cartItems()
@@ -84,6 +86,7 @@ export class CartService {
     );
   }
 
+  
   clear(): void {
     this.cartItems.set([]);
   }

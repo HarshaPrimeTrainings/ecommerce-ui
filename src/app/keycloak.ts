@@ -48,6 +48,17 @@ export class KeycloakService {
     return this.keycloak?.token;
   }
 
+  getEmail():string | undefined{
+    const tokenparsed = this.keycloak?.tokenParsed as any;
+    return tokenparsed?.email;
+  }
+
+  getName():string | undefined{
+    const tokenparsed = this.keycloak?.tokenParsed as any;
+    console.log(tokenparsed?.preferred_username + ' ::::: '+ tokenparsed?.email);
+    return tokenparsed?.name || tokenparsed?.given_name || tokenparsed?.preferred_username;
+  }
+
   login(): void {
     console.log('Login clicked');
     if(this.keycloak){

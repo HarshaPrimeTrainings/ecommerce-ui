@@ -4,6 +4,7 @@ import { CartService } from './../cart.service';
 import { OrderService } from '../order.service';
 import { CreateOrderRequest, Order } from '../models/order.model';
 import { FormsModule } from '@angular/forms';
+import { KeycloakService } from '../keycloak';
 
 @Component({
   selector: 'app-checkout',
@@ -18,6 +19,7 @@ export class Checkout {
 
   private router = inject(Router);
   private orderService = inject(OrderService);
+  private keycloakservice = inject(KeycloakService);
 
   customer={
     csname:'',
@@ -27,6 +29,19 @@ export class Checkout {
 
   isSubmitting  = false;
   errorMessage = '';
+
+  ngOnInit():void{
+    const email = this.keycloakservice.getEmail();
+    const name = this.keycloakservice.getName();
+
+    if(email){
+      this.customer.csemail = email;
+    }
+    if(name){
+      this.customer.csname = name;
+    }
+  }
+
   placeOrder(): void {
 
     if (this.cartService.totalItems() === 0) {

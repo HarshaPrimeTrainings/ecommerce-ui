@@ -8,9 +8,17 @@
     <a routerLink="/cart">
       Cart ({{ cartService.totalItems() }})
     </a>
-    <button (click)="keycloakservice.login()">
-    Login
+    @if (keycloakservice.isAuthenticated()) {
+  <button (click)="keycloakservice.logout()">
+    Logout
   </button>
+  } @else {
+     <button (click)="keycloakservice.login()">
+    Login
+    </button>
+  }
+    
+  
   </nav>
 
 </header>

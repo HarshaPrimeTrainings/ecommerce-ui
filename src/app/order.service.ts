@@ -14,12 +14,11 @@ export class OrderService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:8082/order/save';
+  private apiUrl = 'http://localhost:9090/service2/order/save';
 
   createOrder(
     request: CreateOrderRequest
   ): Observable<Order> {
-
     return this.http.post<Order>(
       this.apiUrl,
       request

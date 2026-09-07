@@ -19,7 +19,8 @@ export class KeycloakService {
   });
     try {
       const authenticated = await this.keycloak.init({
-        onLoad:'login-required',
+       // onLoad:'login-required',
+       onLoad:'check-sso',
         checkLoginIframe : false
       });
 

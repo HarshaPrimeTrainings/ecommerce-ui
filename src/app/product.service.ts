@@ -11,7 +11,7 @@ export class ProductService {
 private http = inject(HttpClient);
 
 
-  private apiUrl = 'http://localhost:8080/product/all';
+  private apiUrl = 'http://localhost:9090/service1/product/all';
 
   getProducts(pageNumber: number): Observable<Product[]> {
 const params = new HttpParams()
